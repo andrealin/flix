@@ -63,10 +63,8 @@
     
     NSDictionary *movie = self.movies[indexPath.row];
     
-    NSLog(@"Cell: %@", movie[@"title"]);
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
-//    cell.textLabel.text = movie[@" title"];
     
     return cell;
 }
