@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -28,7 +29,11 @@
     self.tableView.delegate = self;
     
     // Do any additional setup after loading the view.
+    // Start the activity indicator
+    [self.activityIndicator startAnimating];
     [self fetchMovies];
+    // Stop the activity indicator
+    // Hides automatically if "Hides When Stopped" is enabled
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
@@ -61,6 +66,7 @@
             // TODO: Reload your table view data
         }
         [self.refreshControl endRefreshing];
+        [self.activityIndicator stopAnimating];
     }];
     [task resume];
 }
