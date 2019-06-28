@@ -1,61 +1,42 @@
 //
-//  MoviesViewController.m
+//  MoviesGridViewController.m
 //  flix
 //
-//  Created by drealin on 6/26/19.
+//  Created by drealin on 6/27/19.
 //  Copyright © 2019 drealin. All rights reserved.
 //
 
-#import "MoviesViewController.h"
-#import "MovieCell.h"
+#import "MoviesGridViewController.h"
 #import "UIImageView+AFNetworking.h"
-#import "DetailsViewController.h"
+#import "MovieCollectionCell.h"
 
-@interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MoviesGridViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *movies;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-//@property (nonatomic, strong) UIAlertController *alert;
+
 @end
 
-@implementation MoviesViewController
+@implementation MoviesGridViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+//    NSLog(@"load");
+    
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
     
     // Do any additional setup after loading the view.
-    // Start the activity indicator
     [self.activityIndicator startAnimating];
     [self fetchMovies];
-    // Stop the activity indicator
-    // Hides automatically if "Hides When Stopped" is enabled
-    
-//    self.alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies"
-//                                                                   message:@"The internet connection appears to be offline."
-//                                                            preferredStyle:(UIAlertControllerStyleAlert)];
-//
-//    // create an OK action
-//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Try Again"
-//                                                       style:UIAlertActionStyleDefault
-//                                                     handler:^(UIAlertAction * _Nonnull action) {
-//                                                         // handle response here.
-//                                                     }];
-//    // add the OK action to the alert controller
-//    [self.alert addAction:okAction];
-//
-//    [self presentViewController:self.alert animated:YES completion:^{
-//        // optional code for what happens after the alert controller has finished presenting
-//    }];
-//
+
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:self.refreshControl atIndex:0];
-
+    [self.collectionView insertSubview:self.refreshControl atIndex:0];
+    
 }
 
 - (void)fetchMovies {
@@ -72,11 +53,8 @@
 //            NSLog(@"%@", dataDictionary);
             
             self.movies = dataDictionary[@"results"];
-//            for (NSDictionary *movie in self.movies) {
-//                NSLog(@"%@", movie[@"title"]);
-//            }
-            
-            [self.tableView reloadData] ;
+        
+            [self.collectionView reloadData] ;
             
             // TODO: Get the array of movies
             // TODO: Store the movies in a property to use elsewhere
@@ -90,44 +68,37 @@
     [task resume];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.movies.count;
-}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"cell");
+    MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
     
-    MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell" ];
-    
-    NSDictionary *movie = self.movies[indexPath.row];
-    
-    cell.titleLabel.text = movie[@"title"];
-    cell.synopsisLabel.text = movie[@"overview"];
+    NSDictionary *movie = self.movies[indexPath.item];
     
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
-
+    
     cell.posterView.image = nil;
     [cell.posterView setImageWithURL:posterURL];
     
     return cell;
+                                
 }
 
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+//    return 5;
+    return self.movies.count;
+}
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-
-    UITableViewCell *tappedCell = sender;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.movies[indexPath.row];
-    
-    DetailsViewController *detailsViewController = [segue destinationViewController];
-    detailsViewController.movie = movie;
 }
-
+*/
 
 @end
