@@ -170,6 +170,11 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     self.searchBar.showsCancelButton = NO;
     self.searchBar.text = @"";
+    
+    // workaround
+    self.filteredMovies = self.movies;
+    [self.tableView reloadData];
+    
     [self.searchBar resignFirstResponder];
 }
 
@@ -182,7 +187,7 @@
 
     UITableViewCell *tappedCell = sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie = self.filteredMovies[indexPath.row];
     
     DetailsViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie;
