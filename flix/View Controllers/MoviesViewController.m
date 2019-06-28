@@ -34,24 +34,7 @@
     [self fetchMovies];
     // Stop the activity indicator
     // Hides automatically if "Hides When Stopped" is enabled
-    
-//    self.alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies"
-//                                                                   message:@"The internet connection appears to be offline."
-//                                                            preferredStyle:(UIAlertControllerStyleAlert)];
-//
-//    // create an OK action
-//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Try Again"
-//                                                       style:UIAlertActionStyleDefault
-//                                                     handler:^(UIAlertAction * _Nonnull action) {
-//                                                         // handle response here.
-//                                                     }];
-//    // add the OK action to the alert controller
-//    [self.alert addAction:okAction];
-//
-//    [self presentViewController:self.alert animated:YES completion:^{
-//        // optional code for what happens after the alert controller has finished presenting
-//    }];
-//
+
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
@@ -65,6 +48,25 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
             NSLog(@"%@", [error localizedDescription]);
+            
+        
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies"
+                                                                           message:@"The internet connection appears to be offline."
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+        
+            // create an OK action
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Try Again"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 // handle response here.
+                                                             }];
+            // add the OK action to the alert controller
+            [alert addAction:okAction];
+        
+            [self presentViewController:alert animated:YES completion:^{
+                // optional code for what happens after the alert controller has finished presenting
+            }];
+        
         }
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
