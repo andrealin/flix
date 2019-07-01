@@ -203,10 +203,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZhH-cD-MPw">
-                                        <rect key="frame" x="16" y="317.5" width="351" height="29"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="29" id="crJ-VH-ZvI"/>
-                                        </constraints>
+                                        <rect key="frame" x="16" y="317.5" width="359" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -223,21 +220,19 @@
                                     <constraint firstItem="LoL-RD-kvc" firstAttribute="leading" secondItem="lkg-Sr-3TL" secondAttribute="trailing" constant="8" id="VM9-Ll-2QQ"/>
                                     <constraint firstItem="lpB-Pv-NWK" firstAttribute="leading" secondItem="Xgs-7U-jky" secondAttribute="leading" id="amP-nX-qw7"/>
                                     <constraint firstAttribute="bottom" secondItem="lpB-Pv-NWK" secondAttribute="bottom" constant="380" id="hbK-32-YhJ"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZhH-cD-MPw" secondAttribute="bottom" constant="8" id="koX-tc-4mO"/>
                                     <constraint firstAttribute="trailing" secondItem="lpB-Pv-NWK" secondAttribute="trailing" id="nLO-JF-Imn"/>
-                                    <constraint firstAttribute="height" constant="667" id="rae-Gn-QQQ"/>
-                                    <constraint firstItem="ZhH-cD-MPw" firstAttribute="trailing" secondItem="Xgs-7U-jky" secondAttribute="trailingMargin" id="yjH-Mq-xi8"/>
-                                    <constraint firstAttribute="width" constant="375" id="zQf-zU-i3U"/>
+                                    <constraint firstItem="ZhH-cD-MPw" firstAttribute="trailing" secondItem="Xgs-7U-jky" secondAttribute="trailingMargin" constant="8" id="yjH-Mq-xi8"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Xgs-7U-jky" firstAttribute="leading" secondItem="4Rg-bA-Nil" secondAttribute="leading" id="HT9-Tk-8BY"/>
+                            <constraint firstAttribute="bottom" secondItem="Xgs-7U-jky" secondAttribute="bottom" id="E4I-X8-3DW"/>
+                            <constraint firstItem="Xgs-7U-jky" firstAttribute="leading" secondItem="G31-Hg-KTL" secondAttribute="leading" id="HT9-Tk-8BY"/>
                             <constraint firstItem="Xgs-7U-jky" firstAttribute="top" secondItem="G31-Hg-KTL" secondAttribute="top" id="bEQ-jV-wpP"/>
-                            <constraint firstItem="Xgs-7U-jky" firstAttribute="leading" secondItem="4Rg-bA-Nil" secondAttribute="leading" id="fRd-pg-Ye4"/>
                             <constraint firstItem="lpB-Pv-NWK" firstAttribute="height" secondItem="G31-Hg-KTL" secondAttribute="height" multiplier="0.33333" id="fkg-w4-Cw8"/>
                             <constraint firstItem="Xgs-7U-jky" firstAttribute="trailing" secondItem="G31-Hg-KTL" secondAttribute="trailing" id="m1u-jG-Zq6"/>
-                            <constraint firstItem="Xgs-7U-jky" firstAttribute="leading" secondItem="4Rg-bA-Nil" secondAttribute="leading" id="vGl-tr-b5B"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4Rg-bA-Nil"/>
                     </view>
