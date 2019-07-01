@@ -60,9 +60,8 @@
                                                         <constraint firstAttribute="height" constant="141" id="fd6-s2-6fR"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50c-yh-cEA">
-                                                    <rect key="frame" x="117" y="43" width="243" height="109"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50c-yh-cEA">
+                                                    <rect key="frame" x="125" y="53.5" width="243" height="101"/>
                                                     <color key="backgroundColor" red="1" green="0.89261667990000004" blue="0.33682081260000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <string key="text">Woody has always been confident about his place in the world and that his priority is taking care of his kid, whether that's Andy or Bonnie. But when Bonnie adds a reluctant new toy called \"Forky\" to her room, a road trip adventure alongside old and new friends will show Woody how big the world can be for a toy.</string>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
@@ -80,7 +79,11 @@
                                             <constraints>
                                                 <constraint firstItem="F3H-WA-FHA" firstAttribute="top" secondItem="lfm-i0-vjG" secondAttribute="topMargin" constant="8" id="87T-sR-d6k"/>
                                                 <constraint firstItem="vsJ-Jl-Ntu" firstAttribute="leading" secondItem="F3H-WA-FHA" secondAttribute="trailing" constant="8" id="FDK-w6-fJS"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="50c-yh-cEA" secondAttribute="bottom" constant="8" id="OCB-tj-b26"/>
+                                                <constraint firstItem="50c-yh-cEA" firstAttribute="trailing" secondItem="lfm-i0-vjG" secondAttribute="trailingMargin" constant="8" id="SLN-Zc-kem"/>
+                                                <constraint firstItem="50c-yh-cEA" firstAttribute="leading" secondItem="vsJ-Jl-Ntu" secondAttribute="leading" id="WeB-Lf-lac"/>
                                                 <constraint firstItem="vsJ-Jl-Ntu" firstAttribute="top" secondItem="F3H-WA-FHA" secondAttribute="top" id="bhj-xW-f9N"/>
+                                                <constraint firstItem="50c-yh-cEA" firstAttribute="top" secondItem="vsJ-Jl-Ntu" secondAttribute="bottom" constant="8" id="cek-aC-YLk"/>
                                                 <constraint firstAttribute="trailing" secondItem="vsJ-Jl-Ntu" secondAttribute="trailing" constant="8" id="e95-6I-6eC"/>
                                                 <constraint firstItem="F3H-WA-FHA" firstAttribute="bottom" secondItem="lfm-i0-vjG" secondAttribute="bottomMargin" constant="8" id="svk-C0-Hd6"/>
                                                 <constraint firstItem="F3H-WA-FHA" firstAttribute="leading" secondItem="lfm-i0-vjG" secondAttribute="leadingMargin" constant="8" id="ymT-nx-pLW"/>
