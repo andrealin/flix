@@ -29,6 +29,9 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+
     self.searchBar.delegate = self; // not to self, data = self.movies
     
     // Do any additional setup after loading the view.
@@ -36,7 +39,6 @@
     [self.activityIndicator startAnimating];
     [self fetchMovies];
     
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
